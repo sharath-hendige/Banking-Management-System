@@ -19,3 +19,125 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+
+---
+
+# 2. Final Architecture Documentation
+
+# Banking Management System Architecture
+
+## Architecture
+
+The project follows a layered full-stack architecture.
+
+React Frontend
+      |
+      | HTTP/REST
+      |
+Spring Boot REST Controllers
+      |
+      ▼
+Service Layer
+      |
+      ▼
+Repository Layer
+      |
+      ▼
+MySQL Database
+
+# Security Architecture
+React Login
+     |
+     ▼
+Authentication API
+     |
+     ▼
+Spring Security
+     |
+     ▼
+JWT Generation
+     |
+     ▼
+JWT stored by frontend
+     |
+     ▼
+Protected API request
+     |
+     ▼
+JWT Authentication Filter
+     |
+     ▼
+Role Authorization
+     |
+     ▼
+Controller
+
+
+USER:
+
+USER
+ ├── Dashboard
+ ├── Accounts
+ ├── Deposit
+ ├── Withdraw
+ └── Transactions
+
+ADMIN:
+
+ADMIN
+ ├── Admin Dashboard
+ ├── Users
+ ├── Accounts
+ ├── Transactions
+ ├── Activate
+ └── Deactivate
+
+
+ 
+---
+
+# 3. Final Testing Checklist
+
+# Banking Management System Testing
+
+## Authentication
+
+| Test | Expected Result | Status |
+|---|---|---|
+| Valid Login | Dashboard opens | PASS |
+| Invalid Password | Login rejected | PASS |
+| Invalid Email | Login rejected | PASS |
+| Logout | Redirects to Login | PASS |
+
+## User
+
+| Test | Expected Result | Status |
+|---|---|---|
+| Create Account | Account created | PASS |
+| View Accounts | Accounts displayed | PASS |
+| Deposit | Balance increases | PASS |
+| Withdraw | Balance decreases | PASS |
+| Transactions | Transaction displayed | PASS |
+
+## Admin
+
+| Test | Expected Result | Status |
+|---|---|---|
+| Admin Login | Admin Dashboard | PASS |
+| View Users | Users displayed | PASS |
+| Search User | Matching users displayed | PASS |
+| Activate | Account activated | PASS |
+| Deactivate | Account deactivated | PASS |
+| View Accounts | Accounts displayed | PASS |
+| View Transactions | Transactions displayed | PASS |
+
+## Security
+
+| Test | Expected Result | Status |
+|---|---|---|
+| Access Dashboard without JWT | Redirect/reject | PASS |
+| USER accesses ADMIN API | Reject | PASS |
+| Invalid JWT | Reject | PASS |
+| Logout token cleanup | Token removed | PASS |

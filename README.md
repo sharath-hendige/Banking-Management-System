@@ -1,69 +1,179 @@
 # 🏦 Banking Management System
 
-A full-stack Banking Management System built using **Java, Spring Boot, Spring Security, JWT, MySQL and React.js**.
+A full-stack Banking Management System built using **Java, Spring Boot, Spring Security, JWT, MySQL, and React.js**.
 
-The application provides secure banking operations for customers and administrative management features for administrators.
+The application provides separate functionality for **Users** and **Administrators**, with secure JWT-based authentication and role-based access control.
 
 ---
 
-## 🚀 Features
+## 📌 Project Overview
 
-### 👤 User Features
+The Banking Management System allows customers to manage their bank accounts and transactions through a web application.
 
-- User registration
-- Secure user login
-- JWT-based authentication
-- Role-based authorization
-- User profile
-- Create bank account
-- View bank accounts
-- View account balance
+Users can:
+
+- Register
+- Login securely
+- Create bank accounts
+- View accounts
 - Deposit money
 - Withdraw money
-- Transfer money
-- View transaction history
+- View transactions
+- Manage their profile
+- Logout securely
 
-### 🛡️ Admin Features
+Administrators can:
 
-- Admin authentication
+- Login through the admin role
 - View registered users
-- Activate user accounts
-- Deactivate user accounts
-- View user accounts
-- View user transactions
-- View all transactions
-- Activate bank accounts
-- Deactivate bank accounts
-- Admin audit logging
+- Search users
+- Activate accounts
+- Deactivate accounts
+- View bank accounts
+- View transactions
+- Monitor the banking system
 
 ---
 
-## 🔐 Security
+# 🛠️ Technology Stack
 
-The application uses **Spring Security and JWT authentication**.
+## Backend
 
-Security features include:
+- Java 21+
+- Spring Boot
+- Spring Web
+- Spring Data JPA
+- Spring Security
+- JWT Authentication
+- Hibernate
+- Maven
+- MySQL
 
-- JWT-based authentication
-- Role-based access control
-- Password encryption using BCrypt
-- Protected API endpoints
-- Admin-only endpoints
-- Protected React routes
-- Authentication token validation
-- Account status validation
+## Frontend
 
-Example:
+- React.js
+- JavaScript
+- HTML5
+- CSS3
+- React Router
+- Vite
+- Fetch API
+
+## Database
+
+- MySQL
+
+---
+
+# 🏗️ Project Architecture
 
 ```text
-USER
- ├── /api/accounts/my
- ├── /api/transactions/*
- └── /api/users/*
+                    ┌──────────────────────┐
+                    │      React.js        │
+                    │      Frontend        │
+                    └──────────┬───────────┘
+                               │
+                               │ REST API
+                               ▼
+                    ┌──────────────────────┐
+                    │     Spring Boot      │
+                    │      Backend         │
+                    └──────────┬───────────┘
+                               │
+              ┌────────────────┼────────────────┐
+              │                │                │
+              ▼                ▼                ▼
+        ┌───────────┐   ┌─────────────┐   ┌───────────┐
+        │Controller │   │   Service   │   │ Security  │
+        └───────────┘   └─────────────┘   │   + JWT   │
+                                          └───────────┘
+              │                │
+              └────────────────┘
+                       │
+                       ▼
+                ┌─────────────┐
+                │ Spring Data │
+                │     JPA     │
+                └──────┬──────┘
+                       │
+                       ▼
+                ┌─────────────┐
+                │    MySQL    │
+                │  banking_db │
+                └─────────────┘
 
-ADMIN
- ├── /api/admin/users
- ├── /api/admin/users/{id}/activate
- ├── /api/admin/users/{id}/deactivate
- ├── /api/admin/users/{id}/accounts
- └── /api/admin/users/{id}/transactions
+
+# Project Structure
+
+ Banking-Management-System/
+│
+├── backend/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/
+│   │   │   │   └── com/
+│   │   │   │       └── sharath/
+│   │   │   │           └── banking_management_system/
+│   │   │   │               ├── controller/
+│   │   │   │               ├── dto/
+│   │   │   │               ├── entity/
+│   │   │   │               ├── repository/
+│   │   │   │               ├── security/
+│   │   │   │               └── service/
+│   │   │   │
+│   │   │   └── resources/
+│   │   │       └── application.properties
+│   │   │
+│   │   └── test/
+│   │
+│   └── pom.xml
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   │
+│   ├── package.json
+│   └── vite.config.js
+│
+├── database/
+│   └── banking_db.sql
+│
+├── screenshots/
+│
+├── docs/
+│
+├── README.md
+└── LICENSE               
+
+# Authentication
+
+The application uses JWT-based authentication.
+
+User
+ │
+ ▼
+Login
+ │
+ ▼
+Spring Security
+ │
+ ▼
+Validate email/password
+ │
+ ▼
+Generate JWT
+ │
+ ▼
+React stores token
+ │
+ ▼
+Token sent with protected requests
+ │
+ ▼
+JWT Filter
+ │
+ ▼
+Authorized Request
