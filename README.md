@@ -1,50 +1,67 @@
 # Banking Management System
 
-A Full Stack Banking Management System developed using Spring Boot, React.js, MySQL, and JWT Authentication.
+A secure full-stack digital banking application built using Java, Spring Boot, Spring Security, JWT, MySQL and React.
 
-## Backend
+## Project Status
+
+The project currently includes:
+
+- Customer registration and login
+- JWT authentication
+- User dashboard
+- Bank account creation
+- Account management
+- Deposit
+- Withdrawal
+- Fund transfer
+- Transaction history
+- Administrator dashboard
+- User activation/deactivation
+- Account activation/deactivation
+- Transaction monitoring
+- Transaction filtering
+- Account filtering
+- Administrator audit logging
+- Role-based access control
+
+## Technology Stack
+
+### Backend
 
 - Java 21
 - Spring Boot
 - Spring Security
 - JWT
 - Spring Data JPA
-- Hibernate
+- Maven
+- MySQL
 
-## Frontend
+### Frontend
 
-- React.js
+- React
+- Vite
+- JavaScript
 - HTML
 - CSS
-- Bootstrap
-- Axios
 
-## Database
+### Database
 
 - MySQL
 
-## Features
-
-- User Registration
-- Login with JWT Authentication
-- Create Bank Account
-- Deposit Money
-- Withdraw Money
-- Transfer Money
-- Check Balance
-- Transaction History
-- Admin Dashboard
-
-## Project Structure
+## Architecture
 
 ```text
-backend/
-frontend/
-database/
-docs/
-screenshots/
-```
-
-## Author
-
-Sharath
+React Frontend
+      |
+      | REST API
+      v
+Spring Boot Backend
+      |
+      +-- Spring Security
+      +-- JWT Authentication
+      +-- REST Controllers
+      +-- Service Layer
+      +-- JPA Repositories
+      |
+      v
+    MySQL
